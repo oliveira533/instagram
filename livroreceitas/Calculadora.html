@@ -1,0 +1,132 @@
+<html>
+
+    <style>
+        *
+        {
+            font-family: sans-serif, Arial;
+        }
+        div
+        {
+            text-align: center;
+            position: absolute;
+            height: 280px;
+            width: 200px;
+            left: 50%;
+            top: 50%;
+            margin-left: -100px;
+            margin-top: -300px;
+            border: 2px solid #000000;
+            background-color: #808080;
+        }
+        div button 
+        {
+            width: 45px;
+            height: 45px;
+            font-size: 30px;
+        }
+        #Zero
+        {
+            width: 94px;
+        }
+        #Virgula
+        {
+            width: 94px;
+        }
+        input
+        {
+            margin-top: 10px;
+            margin-bottom: 10px;
+            font-size: 20px;
+            width: 192px;
+            background-color: #053a0069;
+            color: #060244;
+        }
+
+    </style>
+
+    <body>
+
+        <main>
+            <div>
+                <input id = "txtResult" READONLY> <br>
+
+                <button onclick="fnLimpa()"> C </button> 
+                <button onclick="fnConta('/')"> / </button> 
+                <button onclick="fnConta('*')"> * </button>
+                <button onclick="fnConta('-')"> - </button> <br>
+                <button onclick="fnExibe(7)"> 7 </button>
+                <button onclick="fnExibe(8)"> 8 </button>
+                <button onclick="fnExibe(9)"> 9 </button>
+                <button onclick="fnConta('+')"> + </button> <br>
+                <button onclick="fnExibe(4)"> 4 </button>
+                <button onclick="fnExibe(5)"> 5 </button>
+                <button onclick="fnExibe(6)"> 6 </button>
+                <button onclick="fnMaisMenos('%')"> +/- </button> <br>
+                <button onclick="fnExibe(1)"> 1 </button>
+                <button onclick="fnExibe(2)"> 2 </button>
+                <button onclick="fnExibe(3)"> 3 </button>
+                <button onclick="fnResultado()"> = </button> <br>
+                <button id="Zero" onclick="fnExibe(0)"> 0 </button>
+                <button id="Virgula" onclick="fnExibe(1)"> , </button>
+            </div>
+
+        </main>
+
+    </body>
+
+    <script>
+        var nValor = 0;
+        var strOpe = "";
+        var nCont
+
+        function fnExibe (nNum) 
+        {
+            document.all.txtResult.value += nNum;
+        }
+        function fnPOnto (nCont)
+        {
+            if (nCont == 0)
+            {
+                document.all.txtResult.value += ".";
+            }
+        }
+        function fnConta(strOpeSel)
+        {
+            nNum = parseFloat(document.all.txtResult.value);
+            strOpe = strOpeSel;
+            document.all.txtResult.value = "";
+        }
+
+        function fnResultado(nNum2) 
+        {
+            nCont = 0;
+            nNum2 = parseFloat(document.all.txtResult.value);
+            if (strOpe == "+")
+                {document.all.txtResult.value = nNum + nNum2;}
+            if (strOpe == "-")
+                {document.all.txtResult.value = nNum - nNum2;}
+            if (strOpe == "*")
+                {document.all.txtResult.value = nNum * nNum2;}
+            if (strOpe == "/")
+                {
+                    if (nNum2 == 0)
+                        document.all.txtResult.value = "Erro!";
+                    else
+                        document.all.txtResult.value = nNum / nNum2;
+                }
+        }
+
+        function fnMaisMenos(strOpeM)
+        {
+            nNum = parseFloat(document.all.txtResult.value);
+            strOpe = strOpeM;
+            document.all.txtResult.value = (nNum * (-1));    
+        }
+        
+        function fnLimpa()
+        {
+            document.all.txtResult.value = '';
+        }
+    </script>
+
+</html>

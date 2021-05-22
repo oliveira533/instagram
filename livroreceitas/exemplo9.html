@@ -1,0 +1,37 @@
+<html>
+
+    <style>
+        label
+        {
+            display: block;
+        }
+    </style>
+
+    <body>
+        <label>Valor 1</label>
+        <input id="txbValor1" type="number">
+        <label>Valor 2</label>
+        <input id="txbValor2" type="number">
+        </br></br>
+        <button onclick="fnTroca()">Executar</button>
+    </body>
+
+    <script>
+        var nValor1 = 0;
+        var nValor2 = 0;
+
+        function fnTroca ()
+        {
+            var nValor1 = parseInt(document.all.txbValor1.value);
+            var nValor2 = parseInt(document.all.txbValor2.value);
+
+            nValor1 = nValor1 + nValor2;
+            nValor2 = nValor1 - nValor2;
+            nValor1 = nValor1 - nValor2;
+
+            alert("Valor 1 é: " + nValor1); 
+            alert("Valor 2 é: " + nValor2);
+        }
+    </script>
+
+</html>
